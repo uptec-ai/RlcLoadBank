@@ -1,0 +1,79 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <IncludePackageReferencesDuringMarkupCompilation>true</IncludePackageReferencesDuringMarkupCompilation>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\klmon\.nuget\packages\nlog.config\4.7.15\contentFiles\any\any\NLog.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="C:\Users\klmon\.nuget\packages\nlog.config\4.7.15\contentFiles\any\any\NLog.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DevExpress.Images" Version="24.2.14" />
+    <PackageReference Include="devexpress.wpf.controls" Version="24.2.14" />
+    <PackageReference Include="DevExpress.Wpf.Core" Version="24.2.14" />
+    <PackageReference Include="DevExpress.Wpf.ThemesLW" Version="24.2.14" />
+    <PackageReference Include="NLog" Version="6.1.2" />
+    <PackageReference Include="NLog.Config" Version="4.7.15" />
+    
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DevExpress.Charts.v24.2.Core">
+      <HintPath>..\..\..\..\Program Files\DevExpress 24.2\Components\Bin\NetCore\DevExpress.Charts.v24.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v24.2">
+      <HintPath>..\..\..\..\Program Files\DevExpress 24.2\Components\Bin\NetCore\DevExpress.Data.v24.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Drawing.v24.2">
+      <HintPath>..\..\..\..\Program Files\DevExpress 24.2\Components\Bin\NetCore\DevExpress.Drawing.v24.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Images.v24.2">
+      <HintPath>..\..\..\..\Program Files\DevExpress 24.2\Components\Bin\NetCore\DevExpress.Images.v24.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Mvvm.v24.2">
+      <HintPath>..\..\..\..\Program Files\DevExpress 24.2\Components\Bin\NetCore\DevExpress.Mvvm.v24.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Charts.v24.2">
+      <HintPath>..\..\..\..\Program Files\DevExpress 24.2\Components\Bin\NetCore\DevExpress.Xpf.Charts.v24.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Controls.v24.2">
+      <HintPath>..\..\..\..\Program Files\DevExpress 24.2\Components\Bin\NetCore\DevExpress.Xpf.Controls.v24.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Core.v24.2">
+      <HintPath>..\..\..\..\Program Files\DevExpress 24.2\Components\Bin\NetCore\DevExpress.Xpf.Core.v24.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Docking.v24.2">
+      <HintPath>..\..\..\..\Program Files\DevExpress 24.2\Components\Bin\NetCore\DevExpress.Xpf.Docking.v24.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Grid.v24.2">
+      <HintPath>..\..\..\..\Program Files\DevExpress 24.2\Components\Bin\NetCore\DevExpress.Xpf.Grid.v24.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Grid.v24.2.Core">
+      <HintPath>..\..\..\..\Program Files\DevExpress 24.2\Components\Bin\NetCore\DevExpress.Xpf.Grid.v24.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Layout.v24.2.Core">
+      <HintPath>..\..\..\..\Program Files\DevExpress 24.2\Components\Bin\NetCore\DevExpress.Xpf.Layout.v24.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.LayoutControl.v24.2">
+      <HintPath>..\..\..\..\Program Files\DevExpress 24.2\Components\Bin\NetCore\DevExpress.Xpf.LayoutControl.v24.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Ribbon.v24.2">
+      <HintPath>..\..\..\..\Program Files\DevExpress 24.2\Components\Bin\NetCore\DevExpress.Xpf.Ribbon.v24.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Themes.DXStyle.v24.2">
+      <HintPath>..\..\..\..\Program Files\DevExpress 24.2\Components\Bin\NetCore\DevExpress.Xpf.Themes.DXStyle.v24.2.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
