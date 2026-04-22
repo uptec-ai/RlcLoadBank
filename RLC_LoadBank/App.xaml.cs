@@ -25,6 +25,7 @@ namespace RLC_LoadBank
         public readonly Logger nlog = LogManager.GetLogger("");
         override protected void OnStartup(StartupEventArgs e)
         {
+            MainView = new MainView();
             base.OnStartup(e);
         }
         public App()

@@ -28,7 +28,10 @@ namespace RLC_LoadBank
 
         private void Btn_Dashboard_Click(object sender, RoutedEventArgs e)
         {
+            App app = (App)Application.Current;
 
+            app.MainWindow = this;
+            NaviFrame.Content = app.MainView;
         }
 
         private void Btn_SystemStatus_Click(object sender, RoutedEventArgs e)

@@ -11,7 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\64xLogo.ico" />
     <None Remove="C:\Users\klmon\.nuget\packages\nlog.config\4.7.15\contentFiles\any\any\NLog.config" />
+    <None Remove="Fonts\Jalnan2.otf" />
+    <None Remove="Fonts\NanumSquareRoundR.ttf" />
+    <None Remove="Fonts\NotoSansKR-Regular.ttf" />
+    <None Remove="Fonts\Open 24 Display St.ttf" />
   </ItemGroup>
 
   <ItemGroup>
@@ -74,6 +79,14 @@
     <Reference Include="DevExpress.Xpf.Themes.DXStyle.v24.2">
       <HintPath>..\..\..\..\Program Files\DevExpress 24.2\Components\Bin\NetCore\DevExpress.Xpf.Themes.DXStyle.v24.2.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+	<Resource Include="Assets\64xLogo.ico"/>
+    <Resource Include="Fonts\Jalnan2.otf" />
+    <Resource Include="Fonts\NanumSquareRoundR.ttf" />
+    <Resource Include="Fonts\NotoSansKR-Regular.ttf" />
+    <Resource Include="Fonts\Open 24 Display St.ttf" />
   </ItemGroup>
 
 </Project>

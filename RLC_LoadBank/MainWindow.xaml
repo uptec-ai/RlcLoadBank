@@ -12,8 +12,24 @@
     MinHeight="100"
     WindowStartupLocation="CenterScreen"
     WindowStyle="None"
+    WindowState="Maximized"
     >
-    <!--WindowState="Maximized"-->
+    <dx:ThemedWindow.Resources>
+        <Style x:Key="NavigationButtonStyle" TargetType="dxwui:HamburgerMenuNavigationButton">
+            <Setter Property="Foreground" Value="#FF727272"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontFamily" Value="Jalnan 2"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="GlyphWidth" Value="32"/>
+            <Setter Property="GlyphHeight" Value="32"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFE7EBEF"/>
+                    <Setter Property="BorderBrush" Value="#FFD3D9DF"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </dx:ThemedWindow.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -24,29 +40,49 @@
         </Grid.RowDefinitions>
 
         <dxwui:HamburgerMenu Grid.Row="0" Grid.Column="0" AvailableViewStates="Overlay" 
-                             Background="{DynamicResource Main.Background}" 
-                             PaneBackground="{DynamicResource Main.Panel.Background}" 
+                             CompactWidth="60"
+                             PaneBackground="#FFE6E6E6" Background="White"
                              FontFamily="/RLC_LoadBank;component/Fonts/#NanumSquareRound ExtraBold" >
+            <dxwui:HamburgerMenu.Resources>
+                <Style TargetType="{x:Type dxwui:HamburgerMenuToggleStateButton}">
+                    <Setter Property="Foreground" Value="#FF727272"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#7A7A7A"/>
+                            <Setter Property="BorderBrush" Value="#7A7A7A"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#666666"/>
+                            <Setter Property="BorderBrush" Value="#666666"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </dxwui:HamburgerMenu.Resources>
             <dxwui:HamburgerMenu.Content>
                 <dxwui:NavigationFrame x:Name="NaviFrame" BorderThickness="1,0,0,0"/>
             </dxwui:HamburgerMenu.Content>
             <!-- Dashboard -->
             <dxwui:HamburgerMenuNavigationButton x:Name="Btn_Dashboard"
-                                         Content="DASHBOARD" 
-                                         ToolTip="DASHBOARD VIEW" 
-                                         Glyph="{dx:DXImage SvgImages/XAF/Navigation_Item_Dashboard.svg}" Click="Btn_Dashboard_Click"/>
+                                                 Content="DASHBOARD" 
+                                                 ToolTip="DASHBOARD VIEW" 
+                                                 Style="{StaticResource NavigationButtonStyle}"
+                                                 Glyph="{dx:DXImage SvgImages/XAF/Navigation_Item_Dashboard.svg}" Click="Btn_Dashboard_Click"/>
 
             <!-- System Status -->
             <dxwui:HamburgerMenuNavigationButton x:Name="Btn_SystemStatus" 
-                                         Content="SYSTEM STATUS" 
-                                         ToolTip="SYSTEM STATUS VIEW"
-                                         Glyph="{dx:DXImage SvgImages/Icon Builder/Electronics_DesktopMac.svg}" Click="Btn_SystemStatus_Click"/>
+                                                 Content="SYSTEM STATUS" 
+                                                 ToolTip="SYSTEM STATUS VIEW"
+                                                 Style="{StaticResource NavigationButtonStyle}"
+                                                 Glyph="{dx:DXImage SvgImages/Icon Builder/Electronics_DesktopMac.svg}" Click="Btn_SystemStatus_Click"/>
 
             <!-- History -->
             <dxwui:HamburgerMenuNavigationButton x:Name="Btn_History" 
-                                         Content="HISTORY" 
-                                         ToolTip="HISTORY VIEW"
-                                         Glyph="{dx:DXImage SvgImages/RichEdit/DocumentStatistics.svg}" Click="Btn_History_Click"/>
+                                                 Content="HISTORY" 
+                                                 ToolTip="HISTORY VIEW"
+                                                 Style="{StaticResource NavigationButtonStyle}"
+                                                 Glyph="{dx:DXImage SvgImages/RichEdit/DocumentStatistics.svg}" Click="Btn_History_Click"/>
 
 
 
@@ -56,12 +92,14 @@
 
             <!--Uptec Info-->
             <dxwui:HamburgerMenuNavigationButton Content="UPTEC" ToolTip="Uptec Info" IsHitTestVisible="False"
-                                         GlyphWidth="32" GlyphHeight="32" Placement="Bottom" Glyph="/Assets/64xLogo.ico" GlyphStretch="UniformToFill"
-                                         Click="InfoBtn_Click"/>
+                                                 GlyphWidth="32" GlyphHeight="32" Placement="Bottom" Glyph="/RLC_LoadBank;component/Assets/64xLogo.ico" GlyphStretch="UniformToFill"
+                                                 Style="{StaticResource NavigationButtonStyle}"
+                                                 Click="InfoBtn_Click" />
             <!--System Close-->
             <dxwui:HamburgerMenuNavigationButton x:Name="ExitBtn" Content="Exit" ToolTip="Close App" Placement="Bottom"
                                                  GlyphWidth="32" GlyphHeight="32" AllowGlyphTheming="True" Glyph="{dx:DXImage 'SvgImages/Dashboards/Delete.svg'}"
-                                                 Click="ExitBtn_Click"/>
+                                                 Style="{StaticResource NavigationButtonStyle}"
+                                                 Click="ExitBtn_Click" />
         </dxwui:HamburgerMenu>
 
         <!--Log-->
@@ -75,8 +113,8 @@
                                    Content="{Binding StatusManager.PCS, Source={x:Static Application.Current}, UpdateSourceTrigger=PropertyChanged}">
                     <dxb:BarStaticItem.ContentTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding}" Margin="10,0,0,0" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" 
-                                       FontFamily="/EMS_PJT_Hamburger;component/Fonts/#NanumSquareRound Bold"/>
+                            <TextBlock Text="{Binding}" Margin="10,0,0,0" Foreground="#FF333333" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" 
+                                       FontFamily="/RLC_LoadBank;component/Fonts/#NanumSquareRound Bold"/>
                         </DataTemplate>
                     </dxb:BarStaticItem.ContentTemplate>
                 </dxb:BarStaticItem>
@@ -90,8 +128,8 @@
                                    Content="{Binding StatusManager.BMS, Source={x:Static Application.Current}, UpdateSourceTrigger=PropertyChanged}">
                     <dxb:BarStaticItem.ContentTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding}" Margin="10,0,0,0" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" 
-                                       FontFamily="/EMS_PJT_Hamburger;component/Fonts/#NanumSquareRound Bold"/>
+                            <TextBlock Text="{Binding}" Margin="10,0,0,0" Foreground="#FF333333" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" 
+                                       FontFamily="/RLC_LoadBank;component/Fonts/#NanumSquareRound Bold"/>
                         </DataTemplate>
                     </dxb:BarStaticItem.ContentTemplate>
                 </dxb:BarStaticItem>
@@ -106,7 +144,7 @@
                     <dxb:BarStaticItem.ContentTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding}" Margin="10,0,0,0" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" 
-                                       FontFamily="/EMS_PJT_Hamburger;component/Fonts/#NanumSquareRound Bold"/>
+                                       FontFamily="/RLC_LoadBank;component/Fonts/#NanumSquareRound Bold"/>
                         </DataTemplate>
                     </dxb:BarStaticItem.ContentTemplate>
                 </dxb:BarStaticItem>
@@ -121,7 +159,7 @@
                     <dxb:BarStaticItem.ContentTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding}" Margin="10,0,0,0" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" 
-                                       FontFamily="/EMS_PJT_Hamburger;component/Fonts/#NanumSquareRound Bold"/>
+                                       FontFamily="/RLC_LoadBank;component/Fonts/#NanumSquareRound Bold"/>
                         </DataTemplate>
                     </dxb:BarStaticItem.ContentTemplate>
                 </dxb:BarStaticItem>
@@ -136,7 +174,7 @@
                     <dxb:BarStaticItem.ContentTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding}" Margin="10,1,0,0" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" 
-                                       FontFamily="/EMS_PJT_Hamburger;component/Fonts/#NanumSquareRound Bold"/>
+                                       FontFamily="/RLC_LoadBank;component/Fonts/#NanumSquareRound Bold"/>
                         </DataTemplate>
                     </dxb:BarStaticItem.ContentTemplate>
                 </dxb:BarStaticItem>
@@ -152,7 +190,7 @@
                     <dxb:BarStaticItem.ContentTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding}" Margin="10,1,0,0" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" 
-                                       FontFamily="/EMS_PJT_Hamburger;component/Fonts/#NanumSquareRound Bold"/>
+                                       FontFamily="/RLC_LoadBank;component/Fonts/#NanumSquareRound Bold"/>
                         </DataTemplate>
                     </dxb:BarStaticItem.ContentTemplate>
                 </dxb:BarStaticItem>
@@ -168,7 +206,7 @@
                     <dxb:BarStaticItem.ContentTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding}" Margin="10,1,0,0" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" 
-                                       FontFamily="/EMS_PJT_Hamburger;component/Fonts/#NanumSquareRound Bold"/>
+                                       FontFamily="/RLC_LoadBank;component/Fonts/#NanumSquareRound Bold"/>
                         </DataTemplate>
                     </dxb:BarStaticItem.ContentTemplate>
                 </dxb:BarStaticItem>
@@ -184,7 +222,7 @@
                     <dxb:BarStaticItem.ContentTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding}" Margin="10,1,0,0" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" 
-                                       FontFamily="/EMS_PJT_Hamburger;component/Fonts/#NanumSquareRound Bold"/>
+                                       FontFamily="/RLC_LoadBank;component/Fonts/#NanumSquareRound Bold"/>
                         </DataTemplate>
                     </dxb:BarStaticItem.ContentTemplate>
                 </dxb:BarStaticItem>
@@ -200,7 +238,7 @@
                     <dxb:BarStaticItem.ContentTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding}" Margin="10,1,0,0" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" 
-                                       FontFamily="/EMS_PJT_Hamburger;component/Fonts/#NanumSquareRound Bold"/>
+                                       FontFamily="/RLC_LoadBank;component/Fonts/#NanumSquareRound Bold"/>
                         </DataTemplate>
                     </dxb:BarStaticItem.ContentTemplate>
                 </dxb:BarStaticItem>
@@ -216,7 +254,7 @@
                     <dxb:BarStaticItem.ContentTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding}" Margin="10,1,0,0" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" 
-                                       FontFamily="/EMS_PJT_Hamburger;component/Fonts/#NanumSquareRound Bold"/>
+                                       FontFamily="/RLC_LoadBank;component/Fonts/#NanumSquareRound Bold"/>
                         </DataTemplate>
                     </dxb:BarStaticItem.ContentTemplate>
                 </dxb:BarStaticItem>
@@ -236,7 +274,7 @@
                     <dxb:BarStaticItem.ContentTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding}" Margin="10,0,0,0" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" 
-                                       FontFamily="/EMS_PJT_Hamburger;component/Fonts/#NanumSquareRound Bold"/>
+                                       FontFamily="/RLC_LoadBank;component/Fonts/#NanumSquareRound Bold"/>
                         </DataTemplate>
                     </dxb:BarStaticItem.ContentTemplate>
                 </dxb:BarStaticItem>
@@ -251,7 +289,7 @@
                     <dxb:BarStaticItem.ContentTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding}" Margin="10,1,0,0" FontSize="15" FontWeight="Normal" VerticalAlignment="Center" 
-                                       FontFamily="/EMS_PJT_Hamburger;component/Fonts/#NanumSquareRound Bold"/>
+                                       FontFamily="/RLC_LoadBank;component/Fonts/#NanumSquareRound Bold"/>
                         </DataTemplate>
                     </dxb:BarStaticItem.ContentTemplate>
                 </dxb:BarStaticItem>
