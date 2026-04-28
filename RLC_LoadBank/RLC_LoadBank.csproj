@@ -30,6 +30,7 @@
     <PackageReference Include="DevExpress.Wpf.ThemesLW" Version="24.2.14" />
     <PackageReference Include="NLog" Version="6.1.2" />
     <PackageReference Include="NLog.Config" Version="4.7.15" />
+    <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
     
   </ItemGroup>
 
@@ -82,11 +83,26 @@
   </ItemGroup>
 
   <ItemGroup>
-	<Resource Include="Assets\64xLogo.ico"/>
+	<Resource Include="Assets\64xLogo.ico" />
     <Resource Include="Fonts\Jalnan2.otf" />
     <Resource Include="Fonts\NanumSquareRoundR.ttf" />
     <Resource Include="Fonts\NotoSansKR-Regular.ttf" />
     <Resource Include="Fonts\Open 24 Display St.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

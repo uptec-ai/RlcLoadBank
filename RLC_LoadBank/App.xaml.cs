@@ -1,13 +1,12 @@
-﻿using DevExpress.Xpf.Core;
-using Microsoft.VisualBasic.Logging;
+using DevExpress.Xpf.Core;
 using NLog;
+using RLC_LoadBank.Models.Managers;
+using RLC_LoadBank.Models.Modbus;
+using RLC_LoadBank.Protocols.Modbus;
+using RLC_LoadBank.Services.Modbus;
 using RLC_LoadBank.Views;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
@@ -21,24 +20,36 @@ namespace RLC_LoadBank
     {
         public MainView MainView { get; private set; }
 
+        public StatusManager StatusManager { get; private set; }
+        public IModbusService ModbusService { get; private set; }
+        public ModbusProtocolDefinition RlcModbusProtocol { get; private set; }
 
-        public readonly Logger nlog = LogManager.GetLogger("");
-        override protected void OnStartup(StartupEventArgs e)
+        public readonly Logger nlog = LogManager.GetLogger(string.Empty);
+
+        protected override void OnStartup(StartupEventArgs e)
         {
+            RlcModbusProtocol = RlcModbusProtocolDefinition.CreateDefault();
+            ModbusService = new ModbusTcpService(RlcModbusProtocol, RlcModbusProtocol.DefaultEndpoint);
+
+            StatusManager = new StatusManager();
+            StatusManager.Init();
+            
             MainView = new MainView();
+
             base.OnStartup(e);
         }
+
         public App()
         {
             RegisterGlobalExceptionHandlers();
             CompatibilitySettings.UseLightweightThemes = true;
-
         }
+
         private void RegisterGlobalExceptionHandlers()
         {
-            DispatcherUnhandledException += App_DispatcherUnhandledException; // UI 이벤트/XAML 로딩 중 예외 (버튼클릭, Loaded 이벤트, 바인딩 후 실현되는 UI코드 등..)
-            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException; // 앱 전체에서 최종 미처리 예외
-            TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException; // await 안 한 Task 내부 예외
+            DispatcherUnhandledException += App_DispatcherUnhandledException;
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+            TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
         }
 
         #region Exception Handling
@@ -61,6 +72,7 @@ namespace RLC_LoadBank
             LogFatalException("TaskScheduler.UnobservedTaskException", e.Exception);
             e.SetObserved();
         }
+
         private void LogFatalException(string source, Exception ex)
         {
             try
@@ -69,7 +81,6 @@ namespace RLC_LoadBank
             }
             catch
             {
-                // NLog 실패 시 아래 fallback 파일 기록으로 남긴다.
             }
 
             try
@@ -87,9 +98,9 @@ namespace RLC_LoadBank
             }
             catch
             {
-                // fallback 기록도 실패하면 더 이상 할 수 있는 작업이 없다.
             }
         }
+
         private static void ShowFatalMessage(Exception ex)
         {
             try
@@ -98,14 +109,19 @@ namespace RLC_LoadBank
                     "프로그램 실행 중 치명적인 오류가 발생했습니다." + Environment.NewLine +
                     "logs\\fatal_startup.txt 파일을 확인해주세요." + Environment.NewLine + Environment.NewLine +
                     ex.Message,
-                    "EMS 실행 오류",
+                    "RLC LoadBank 실행 오류",
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
             }
             catch
             {
-                // MessageBox 표시 실패 시 무시한다.
             }
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            ModbusService?.Dispose();
+            base.OnExit(e);
         }
         #endregion
     }

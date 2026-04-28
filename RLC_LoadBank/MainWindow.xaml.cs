@@ -24,6 +24,11 @@ namespace RLC_LoadBank
         public MainWindow()
         {
             InitializeComponent();
+
+            App app = (App)Application.Current;
+
+            app.MainWindow = this;
+            NaviFrame.Content = app.MainView;
         }
 
         private void Btn_Dashboard_Click(object sender, RoutedEventArgs e)

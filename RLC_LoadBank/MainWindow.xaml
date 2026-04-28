@@ -11,21 +11,23 @@
     MinWidth="1920"
     MinHeight="100"
     WindowStartupLocation="CenterScreen"
-    WindowStyle="None"
+    WindowStyle="ToolWindow"
     WindowState="Maximized"
     >
     <dx:ThemedWindow.Resources>
         <Style x:Key="NavigationButtonStyle" TargetType="dxwui:HamburgerMenuNavigationButton">
             <Setter Property="Foreground" Value="#FF727272"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="FontFamily" Value="Jalnan 2"/>
+            <Setter Property="FontFamily" Value="Noto Sans KR"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="GlyphWidth" Value="32"/>
             <Setter Property="GlyphHeight" Value="32"/>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#FFE7EBEF"/>
-                    <Setter Property="BorderBrush" Value="#FFD3D9DF"/>
+                    <Setter Property="Background" Value="#FFDADADA"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#FFC5C5C5"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -39,23 +41,23 @@
             <RowDefinition Height="34"/>
         </Grid.RowDefinitions>
 
+        
         <dxwui:HamburgerMenu Grid.Row="0" Grid.Column="0" AvailableViewStates="Overlay" 
-                             CompactWidth="60"
-                             PaneBackground="#FFE6E6E6" Background="White"
+                             CompactWidth="65"
+                             PaneBackground="White" Background="#F4F7F9"
                              FontFamily="/RLC_LoadBank;component/Fonts/#NanumSquareRound ExtraBold" >
             <dxwui:HamburgerMenu.Resources>
                 <Style TargetType="{x:Type dxwui:HamburgerMenuToggleStateButton}">
                     <Setter Property="Foreground" Value="#FF727272"/>
                     <Setter Property="BorderBrush" Value="Transparent"/>
-
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#7A7A7A"/>
-                            <Setter Property="BorderBrush" Value="#7A7A7A"/>
+                            <Setter Property="Background" Value="#FFC5C5C5"/>
+                            <Setter Property="BorderBrush" Value="#FFC5C5C5"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" Value="#666666"/>
-                            <Setter Property="BorderBrush" Value="#666666"/>
+                            <Setter Property="Background" Value="#FFC5C5C5"/>
+                            <Setter Property="BorderBrush" Value="#FFC5C5C5"/>
                         </Trigger>
                     </Style.Triggers>
                 </Style>
@@ -67,15 +69,16 @@
             <dxwui:HamburgerMenuNavigationButton x:Name="Btn_Dashboard"
                                                  Content="DASHBOARD" 
                                                  ToolTip="DASHBOARD VIEW" 
+                                                 IsSelected="True"
                                                  Style="{StaticResource NavigationButtonStyle}"
-                                                 Glyph="{dx:DXImage SvgImages/XAF/Navigation_Item_Dashboard.svg}" Click="Btn_Dashboard_Click"/>
+                                                 Glyph="{dx:DXImage SvgImages/Icon Builder/Electronics_DesktopMac.svg}" Click="Btn_Dashboard_Click"/>
 
             <!-- System Status -->
             <dxwui:HamburgerMenuNavigationButton x:Name="Btn_SystemStatus" 
                                                  Content="SYSTEM STATUS" 
                                                  ToolTip="SYSTEM STATUS VIEW"
                                                  Style="{StaticResource NavigationButtonStyle}"
-                                                 Glyph="{dx:DXImage SvgImages/Icon Builder/Electronics_DesktopMac.svg}" Click="Btn_SystemStatus_Click"/>
+                                                 Glyph="{dx:DXImage SvgImages/Spreadsheet/FunctionsStatistical.svg}" Click="Btn_SystemStatus_Click"/>
 
             <!-- History -->
             <dxwui:HamburgerMenuNavigationButton x:Name="Btn_History" 
@@ -92,12 +95,14 @@
 
             <!--Uptec Info-->
             <dxwui:HamburgerMenuNavigationButton Content="UPTEC" ToolTip="Uptec Info" IsHitTestVisible="False"
-                                                 GlyphWidth="32" GlyphHeight="32" Placement="Bottom" Glyph="/RLC_LoadBank;component/Assets/64xLogo.ico" GlyphStretch="UniformToFill"
+                                                 GlyphWidth="32" GlyphHeight="32" Placement="Bottom" 
+                                                 Glyph="{dx:DXImage SvgImages/XAF/Action_AboutInfo.svg}" GlyphStretch="UniformToFill"
                                                  Style="{StaticResource NavigationButtonStyle}"
                                                  Click="InfoBtn_Click" />
             <!--System Close-->
             <dxwui:HamburgerMenuNavigationButton x:Name="ExitBtn" Content="Exit" ToolTip="Close App" Placement="Bottom"
-                                                 GlyphWidth="32" GlyphHeight="32" AllowGlyphTheming="True" Glyph="{dx:DXImage 'SvgImages/Dashboards/Delete.svg'}"
+                                                 GlyphWidth="32" GlyphHeight="32" AllowGlyphTheming="True" 
+                                                 Glyph="{dx:DXImage SvgImages/Icon Builder/Actions_DeleteCircled.svg}"
                                                  Style="{StaticResource NavigationButtonStyle}"
                                                  Click="ExitBtn_Click" />
         </dxwui:HamburgerMenu>

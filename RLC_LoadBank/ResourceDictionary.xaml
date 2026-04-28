@@ -1,5 +1,20 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"                     
+                    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+                    xmlns:ext="http://schemas.abtsoftware.co.uk/scichart/exampleExternals">
     <SolidColorBrush x:Key="Default.Background" Color="#FFEEF1F0"/>
     <SolidColorBrush x:Key="Default.Button.Background" Color="#FFEEF1F0"/>
+
+    <SolidColorBrush x:Key="DashboardBackgroundBrush" Color="#F4F7F9" />
+    <SolidColorBrush x:Key="CardBorderBrush" Color="#D9E2E8" />
+    <SolidColorBrush x:Key="CardBackgroundBrush" Color="White" />
+    <SolidColorBrush x:Key="CardHeaderBrush" Color="#0F8B94" />
+    <SolidColorBrush x:Key="MutedTextBrush" Color="#667085" />
+    <SolidColorBrush x:Key="BodyTextBrush" Color="#1F2937" />
+    <SolidColorBrush x:Key="SurfaceBrush" Color="#F8FBFC" />
+    <SolidColorBrush x:Key="OutlineBrush" Color="#FFB5BABD" />
+    <SolidColorBrush x:Key="SuccessBrush" Color="#2F9E6D" />
+    <SolidColorBrush x:Key="DangerBrush" Color="#D92D20" />
+    <SolidColorBrush x:Key="WarningBrush" Color="#F08C00" />
 </ResourceDictionary>
